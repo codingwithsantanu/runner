@@ -7,7 +7,7 @@ class Game {
         this.height;
 
         // Initialise Game variables.
-        this.debug = true;
+        this.debug = false;
         this.gameOver = true;
 
         this.score = null;
