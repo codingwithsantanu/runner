@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Pixel Runner</title>
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <canvas id="mainCanvas"></canvas>
+
+    <div class="assets">
+        <!-- Images -->
+        <img id="sky" src="images/sky.png">
+        <img id="ground" src="images/ground.png">
+
+        <img id="player-jump" src="images/player/jump.png">
+        <img id="player-standing" src="images/player/standing.png">
+        <img id="player-walk-1" src="images/player/walk_1.png">
+        <img id="player-walk-2" src="images/player/walk_2.png">
+
+        <img id="fly-1" src="images/fly/1.png">
+        <img id="fly-2" src="images/fly/2.png">
+
+        <img id="snail-1" src="images/snail/1.png">
+        <img id="snail-2" src="images/snail/2.png">
+
+        <!-- Audio -->
+        <audio id="jump" src="sounds/jump.mp3"></audio>
+        <audio id="bg-music" src="sounds/bg.wav"></audio>
+    </div>
+
+    <!-- Don't change the order of scripts -->
+    <script src="js/background.js"></script>
+    <script src="js/obstacles.js"></script>
+    <script src="js/spawner.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
