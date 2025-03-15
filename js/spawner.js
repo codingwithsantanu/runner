@@ -3,7 +3,7 @@ class Spawner {
         this.game = game;
 
         this.obstacles = [];
-        this.obstacleInterval = 1500;
+        this.obstacleInterval = 1800;
         this.lastSpawnTime = performance.now();
     }
 
@@ -42,20 +42,25 @@ class Spawner {
                 number = 0.1;
             }
         }
+        
+        // Calculate x position. The first obstacle enters
+        // after some initial delay to make the game fair.
+        // Yeah I am bad but I am also the developer so...
+        const xPosition = 1.5 * this.game.width;
 
         // Initialise the obstacle.
         if (number >= 0.5) {
             obstacle = new Snail(this.game);
             obstacle.resize(0, 0);
             obstacle.resize(
-                this.game.width,
+                xPosition,
                 this.game.background.skyHeight - obstacle.height
             );
         } else {
             obstacle = new Fly(this.game);
             obstacle.resize(0, 0);
             obstacle.resize(
-                this.game.width,
+                xPosition,
                 this.game.player.homeY - obstacle.height - 10
             );
         }

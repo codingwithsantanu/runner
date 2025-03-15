@@ -19,6 +19,7 @@ class Game {
         this.player = new Player(this);
         this.spawner = new Spawner(this);
         this.background = new Background(this);
+        this.audioHandler = new AudioHandler();
 
         // Handle window resize events ensuring Full Screen.
         this.resize(window.innerWidth, window.innerHeight);
@@ -30,21 +31,25 @@ class Game {
         }); // Calls resize() for current window dimensions.
 
         // Other event listeners.
-        window.addEventListener("touchstart", event => {
-            this.player.jump();
-            if (this.gameOver) {
-                this.gameOver = false;
-                this.resize(this.width, this.height);
-            }
-        });
-
         window.addEventListener("click", event => {
-            this.player.jump();
             if (this.gameOver) {
                 this.gameOver = false;
                 this.resize(this.width, this.height);
+                this.audioHandler.play(this.audioHandler.bg);
+            } else {
+                this.player.jump();
+                this.audioHandler.play(this.audioHandler.jump);
             }
         });
+        
+        /* NOTE: The click event listener is
+         | called after touchstart even for mobile
+         | devices. So for PC, if we use both there
+         | will be no issue but for mobile
+         | the event listeners function as if they
+         | were called twice. So I have removed the
+         | touchstart event listener.
+        */
     }
 
     // Main methods for handling Game logic.
@@ -109,6 +114,7 @@ class Game {
         }
         const HEIGHT = 0.35 * (this.height - this.player.heightTitleScreen);
         const SCORE = (this.score !== null)? `Your Score: ${Math.round(this.score)}` : "Tap anywhere to begin!";
+        
         const COLOR = "rgb(111, 196, 169)";
 
         this.displayText(

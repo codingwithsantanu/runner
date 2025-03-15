@@ -64,7 +64,7 @@ class Player {
 
         this.speedY = 0;
         this.gravity = 1000 * this.game.ratio;
-        this.jumpSpeed = -700 * this.game.ratio;
+        this.jumpSpeed = -800 * this.game.ratio;
         
         // Standing image scaling.
         const scaleTitleScreen = Math.min(
